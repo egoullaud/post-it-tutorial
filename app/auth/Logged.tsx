@@ -11,12 +11,6 @@ type User = {
 export default function Logged({ image }: User) {
   return (
     <li className="flex mx-8 gap-8 items-center">
-      <button
-        className="bg-gray-700 text-white text-sm rounded-xl px-6 py-2"
-        onClick={() => signOut()}
-      >
-        Sign Out
-      </button>
       <Link href="/dashbaord">
         <Image
           className="rounded-full"
@@ -27,6 +21,12 @@ export default function Logged({ image }: User) {
           priority
         />
       </Link>
+      <button
+        className="bg-gray-700 text-white text-sm rounded-xl px-6 py-2"
+        onClick={() => signOut()}
+      >
+        Sign Out
+      </button>
     </li>
   );
 }
