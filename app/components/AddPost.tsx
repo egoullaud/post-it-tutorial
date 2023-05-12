@@ -9,10 +9,26 @@ export default function AddPost() {
 
   //create post
   const { mutate } = useMutation(
-    async (title) => await axios.post("/api/posts/addPost", { title })
+    async (title: string) => await axios.post("/api/posts/addPost", { title }),
+    {
+      onError: (error) => {
+        console.log(error);
+      },
+      onSuccess: (data) => {
+        console.log(data);
+        setTitle("");
+        setIsDisabled(false);
+      },
+    }
   );
+
+  const submitPost = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    mutate(title);
+  };
   return (
-    <form className="bg-white my-8 p-8 rounded-md">
+    <form onSubmit={submitPost} className="bg-white my-8 p-8 rounded-md">
       <div className="flex flex-col my-4">
         <textarea
           className="p-4 text-lg rounded-md my-2 bg-gray-200"
