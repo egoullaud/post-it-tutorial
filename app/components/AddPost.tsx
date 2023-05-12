@@ -29,8 +29,9 @@ export default function AddPost() {
 
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault();
-    toastPostID = toast.loading("Creating your post", { id: toastPostID });
+
     setIsDisabled(true);
+    toastPostID = toast.loading("Creating your post", { id: toastPostID });
     mutate(title);
   };
   return (
